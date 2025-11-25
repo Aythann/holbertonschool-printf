@@ -8,6 +8,7 @@
  *
  * Return: Number of characters printed
  */
+
 int _print_int(va_list ap)
 {
 	long n = va_arg(ap, int);
@@ -46,6 +47,7 @@ int _print_int(va_list ap)
  *
  * Return: Number of characters printed (1)
  */
+
 int _print_char(va_list ap)
 {
 	char c = (char)va_arg(ap, int);
@@ -73,7 +75,6 @@ int _print_string(va_list ap)
 
 	return (count);
 }
-
 
 /**
  * _print_percent - Prints a percent sign (%)

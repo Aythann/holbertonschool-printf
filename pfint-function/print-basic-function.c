@@ -2,43 +2,47 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-/**
- * _print_int - Prints a signed integer (d or i)
- * @ap: List of arguments containing the integer to print
- *
- * Return: Number of characters printed
- */
+#include "main.h"
+#include <unistd.h>
+#include <stdarg.h>
 
-int _print_int(va_list ap)
+/**
+ * _print_number - prints a number recursively
+ * @n: number to print
+ *
+ * Return: number of chars printed
+ */
+int _print_number(long n)
 {
-	long n = va_arg(ap, int);
-	long num = n;
 	int count = 0;
 	char digit;
 
-	/* Handle negative numbers */
-	if (num < 0)
+	if (n < 0)
 	{
-	count += write(1, "-", 1);
-	num = -num;
+		count += write(1, "-", 1);
+		n = -n;
 	}
 
-	/* Recursive printing of digits */
- 	if (num / 10)
-	{
-	long temp = num / 10;
-	va_list fake;
-	va_start(fake, temp);
-	*((long *)&fake) = temp;
-	count += _print_int(fake);
- 	va_end(fake);
- 	}
+	if (n / 10)
+		count += _print_number(n / 10);
 
-	/* Print last digit */
-	digit = (num % 10) + '0';
+	digit = (n % 10) + '0';
 	count += write(1, &digit, 1);
 
 	return (count);
+}
+
+/**
+ * _print_int - prints an integer (%d, %i)
+ * @ap: argument list
+ *
+ * Return: number of chars printed
+ */
+int _print_int(va_list ap)
+{
+	long n = va_arg(ap, int);
+
+	return (_print_number(n));
 }
 
 /**

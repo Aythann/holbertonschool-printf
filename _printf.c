@@ -1,54 +1,55 @@
-#include <stdlib.h>
 #include <stdarg.h>
 #include "main.h"
 
 /**
-* _printf - Function that prints anything formated
-* @format: list of types of arguments passed to the function
-*
-* Return: the result
-*/
-
+ * _printf - produces output according to a format
+ * @format: a character string
+ *
+ * Return: number of characters printed or -1 on error
+ */
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int i = 0;
+	int i = 0, result = 0, type;
 
-	if(format == NULL)
-	return (-1);
+	if (format == NULL)
+		return (-1);
 
 	va_start(ap, format);
 
 	while (format[i] != '\0')
 	{
-		if(format[i] == '%')
+		if (format[i] == '%')
 		{
 			i++;
-			if(format[i] == '%')
+			if (!format[i])
 			{
-				print_percent(ap);
-				continue;
+				va_end(ap);
+				return (-1);
 			}
 
-			if(format[i] == 'c')
-			{
-				print_c(ap);
-				continue;
-			}
+			type = parse_format(format[i]);
 
-			if(format[i] == 's')
+			if (type == TYPE_CHAR)
+				result += print_char(va_arg(ap, int));
+			else if (type == TYPE_STRING)
+				result += print_string(va_arg(ap, char *));
+			else if (type == TYPE_PERCENT)
+				result += print_percent();
+			else if (type == TYPE_INT)
+				result += print_int(va_arg(ap, int));
+			else
 			{
-				print_s(ap);
-				continue;
+				result += _putchar('%');
+				result += _putchar(format[i]);
 			}
 		}
 		else
-		{
-			write(format[i]);
-			i++;
-		}
+			result += _putchar(format[i]);
+
+		i++;
 	}
 
 	va_end(ap);
-	return (count);
+	return (result);
 }

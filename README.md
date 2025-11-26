@@ -15,11 +15,20 @@ Use git for version control.
 Compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89.
 
 # Usage exemples
-_printf("Length:[%d, %i]\n", len, len); 		-->STDOUT: Length:[39, 39]
-_printf("Negative:[%d]\n", -762534);    		-->STDOUT: Negative:[-762534]
-_printf("Character:[%c]\n", 'H');				-->STDOUT: Character:[H]
-_printf("String:[%s]\n", "I am a string !");	-->STDOUT: String:[I am a string !]
-_printf("Percent:[%%]\n");						-->STDOUT: Percent:[%]
+_printf("Length:[%d, %i]\n", len, len);
+-->STDOUT: Length:[39, 39]
+
+_printf("Negative:[%d]\n", -762534);
+-->STDOUT: Negative:[-762534]
+
+_printf("Character:[%c]\n", 'H');
+-->STDOUT: Character:[H]
+
+_printf("String:[%s]\n", "I am a string !");
+-->STDOUT: String:[I am a string !]
+
+_printf("Percent:[%%]\n");
+-->STDOUT: Percent:[%]
 
 # Man page
 To view the custom manual page:

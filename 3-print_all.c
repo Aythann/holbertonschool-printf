@@ -8,7 +8,8 @@
  */
 void print_c(va_list ap)
 {
-	printf("%c", (char)va_arg(ap, int));
+	char c = (char)va_arg(ap, int);
+	return (_putchar(c));
 }
 
 /**
@@ -65,7 +66,6 @@ void print_all(const char * const format, ...)
 		while (types[j] && types[j] != format[i])
 			j++;
 
-        /* If format[i] matches a valid type */
 		if (types[j])
 		{
 			printf("%s", sep);

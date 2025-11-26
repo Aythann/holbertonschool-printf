@@ -10,26 +10,25 @@
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int i = 0, result = 0, type;
+	int i = 0;
+	int result = 0;
+	int type;
 
 	if (format == NULL)
 		return (-1);
 
 	va_start(ap, format);
-
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			if (!format[i])
+			if (format[i] == '\0')
 			{
 				va_end(ap);
 				return (-1);
 			}
-
 			type = parse_format(format[i]);
-
 			if (type == TYPE_CHAR)
 				result += print_char(va_arg(ap, int));
 			else if (type == TYPE_STRING)
@@ -46,10 +45,8 @@ int _printf(const char *format, ...)
 		}
 		else
 			result += _putchar(format[i]);
-
 		i++;
 	}
-
 	va_end(ap);
 	return (result);
 }

@@ -1,4 +1,4 @@
-.TH man 3 "25 November 2025" "_printf manual" "Library Functions Manual"
+.TH man 3 "26 November 2025" "_printf manual" "Library Functions Manual"
 
 .SH NAME
 _printf \- custom implementation of the C standard printf function

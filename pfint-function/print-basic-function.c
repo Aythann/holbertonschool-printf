@@ -1,8 +1,4 @@
 #include "main.h"
-#include <stdarg.h>
-#include <unistd.h>
-
-#include "main.h"
 #include <unistd.h>
 #include <stdarg.h>
 

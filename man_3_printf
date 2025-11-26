@@ -69,8 +69,4 @@ STDOUT: String:[I am a string !]
 STDOUT: Percent:[%]
 
 .SH AUTHORS
-Written by Auric Chen, Vincent Renaud and Aythan Cristovao.
-
-
-.SH AUTHORS
 Written by Aythan Cristovao, Vincent Renaud and auric chen.

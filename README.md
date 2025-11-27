@@ -48,7 +48,7 @@ To validate the fonctionnality of our funtion, we used:
 	-Wno-format (Disables warnings related to format strings, here printf)
 
 ## Flowchart
-To see the flowchart, ![Click here](flowchart.png)
+![Link](flowchart.png)
 
 ## Usefull informations
 main.h containts all the prototypes and defines handles all cases.

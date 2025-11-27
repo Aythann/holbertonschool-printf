@@ -12,8 +12,7 @@ _printf \- produce formatted output according to a format string
 
 .SH DESCRIPTION
 The _printf() function writes output to the standard output (stdout) according to the
-format string pointed to by
- format .
+format string pointed to by format.
 
 The format string contains ordinary characters, which are written directly
 to the output, and conversion specifiers, which begin with the '%'
@@ -57,24 +56,24 @@ If format is NULL or an error occurs, the function returns -1 .
 
 .SH EXAMPLES
 
-.B _printf("Length:[%d, %i]\n", len, len);
+.B _printf("Length:[%d, %i]", len, len);
 
 -->STDOUT: Length:[39, 39]
 
-.B _printf("Negative:[%d]\n", -762534);
+.B _printf("Negative:[%d]", -762534);
 
 -->STDOUT: Negative:[-762534]
 
 
-.B _printf("Character:[%c]\n", 'H');
+.B _printf("Character:[%c]", 'H');
 
 -->STDOUT: Character:[H]
 
-.B _printf("String:[%s]\n", "I am a string !");
+.B _printf("String:[%s]", "I am a string !");
 
 -->STDOUT: String:[I am a string !]
 
-.B _printf("Percent:[%%]\n");
+.B _printf("Percent:[%%]");
 
 -->STDOUT: Percent:[%]
 

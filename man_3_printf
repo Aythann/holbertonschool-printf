@@ -1,4 +1,4 @@
-.TH man 3 "26 November 2025" "_printf manual" "Library Functions Manual"
+.TH _PRINTF 3 "November 2025" "_printf manual" "Library Functions Manual"
 
 .SH NAME
 _printf \- custom implementation of the C standard printf function
@@ -6,22 +6,27 @@ _printf \- custom implementation of the C standard printf function
 .SH SYNOPSIS
 .B #include "main.h"
 .br
+.B #include <stdarg.h>
+.br
 .B int _printf(const char *format, ...);
 
 .SH DESCRIPTION
-The
-.B _printf
-function writes formatted output to the standard output (file descriptor 1)
-according to the format string provided.
+The _printf() function writes output to the standard output (stdout) according to the
+format string pointed to by
+ format .
 
-Only a limited set of conversion specifiers is supported.
-Characters that are not part of a valid format directive are printed as-is.
+The format string contains ordinary characters, which are written directly
+to the output, and conversion specifiers, which begin with the '%'
+character and determine how the corresponding arguments are formatted.
 
-Supported conversion specifiers:
+.PP
+The following conversion specifiers are supported:
+
 
 .TP
 .B %c
-Prints a single character.
+Print a single character.
+Argument type: int
 
 .TP
 .B %s
@@ -33,9 +38,13 @@ Prints a signed integer in decimal notation.
 
 .TP
 .B %%
-Prints a literal percent sign.
+Print a literal '%' character.
+No argument consumed.
 
-Unsupported format specifiers are printed literally (for example "%r" prints "%r").
+Any unknown specifier is printed literally: a '%' followed by the unrecognized character.
+
+.pp
+This implementation does not support flags (such as '-', '+', ' ', '#', or '0'), field width, precision, or length modifiers.
 
 .SH RETURN VALUE
 The
@@ -67,6 +76,9 @@ STDOUT: String:[I am a string !]
 .TP
 .B _printf("Percent:[%%]\\n");
 STDOUT: Percent:[%]
+
+.SH DATE
+November 2025
 
 .SH AUTHORS
 Written by Aythan Cristovao, Vincent Renaud and auric chen.

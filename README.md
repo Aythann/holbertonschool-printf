@@ -51,7 +51,6 @@ To validate the fonctionnality of our funtion, we used:
 ![Link](flowchart.png)
 
 ## Usefull informations
-main.h containts all the prototypes and defines handles all cases.
-parse_format.c checks each format specifier and return the correct type handler.
+main.h containts all the prototypes.
 arg-func.c containts all functions handling specific argument types.
 _printf scans the string, finds each "%" character, validates it, and calls the corresponding function to process the argument and print the output.

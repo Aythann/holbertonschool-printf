@@ -12,40 +12,46 @@ int _printf(const char *format, ...)
 	va_list ap;
 	int i = 0;
 	int result = 0;
-	int type;
 
 	if (format == NULL)
 		return (-1);
 
 	va_start(ap, format);
+
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
-			i++;
-			if (format[i] == '\0')
+			if (format[i + 1] == '\0')
 			{
 				va_end(ap);
 				return (-1);
 			}
-			type = parse_format(format[i]);
-			if (type == TYPE_CHAR)
+
+			if (format[i + 1] == 'c')
 				result += print_char(va_arg(ap, int));
-			else if (type == TYPE_STRING)
+
+			else if (format[i + 1] == 's')
 				result += print_string(va_arg(ap, char *));
-			else if (type == TYPE_PERCENT)
+
+			else if (format[i + 1] == '%')
 				result += print_percent();
-			else if (type == TYPE_INT)
+
+			else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 				result += print_int(va_arg(ap, int));
 			else
 			{
 				result += _putchar('%');
-				result += _putchar(format[i]);
+				result += _putchar(format[i + 1]);
 			}
+			i += 2;
 		}
+
 		else
+		{
 			result += _putchar(format[i]);
-		i++;
+			i++;
+		}
 	}
 	va_end(ap);
 	return (result);
